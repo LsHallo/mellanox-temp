@@ -1,6 +1,6 @@
 on:
   release:
-    types: [created, published]
+    types: [published]
 
 permissions:
   contents: write
@@ -21,6 +21,8 @@ jobs:
           use-cross: true
           command: build
           args: --release --target x86_64-pc-windows-gnu --bin mellanox-temp --target-dir ./build
+      - run: ls -la .
+      - run: ls -la ./build
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
